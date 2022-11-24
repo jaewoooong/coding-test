@@ -3,18 +3,20 @@ def sol():
     for _ in range(9):
         height = int(input())
         heights.append(height)
-    
-    sum_heights = sum(heights)
 
-    for index1 in range(0, len(heights) - 1):
-        for index2 in range(index1 + 1, len(heights)):
-            if heights[index1] + heights[index2] == sum_heights - 100:
-                remove_elem1, remove_elem2 = heights[index1], heights[index2]
-                heights.remove(remove_elem1)
-                heights.remove(remove_elem2)
-                heights.sort()
-                print_list(heights)
-                return
+    heights = get_heights(heights)
+    print_list(heights)
+    return
+
+def get_heights(list:list)->list:
+    for index1 in range(0, len(list) - 1):
+        for index2 in range(index1 + 1, len(list)):
+            if list[index1] + list[index2] == sum(list) - 100:
+                remove_elem1, remove_elem2 = list[index1], list[index2]
+                list.remove(remove_elem1)
+                list.remove(remove_elem2)
+                list.sort()
+                return list
 
 def print_list(list:list):
     for elem in list:
